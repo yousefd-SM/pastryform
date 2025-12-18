@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דיווח יומי - אחראי ייצור</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d6591 0%, #68dcc7 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2d6591 0%, #68dcc7 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            padding: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #2d6591;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #68dcc7;
+            box-shadow: 0 0 0 3px rgba(104, 220, 199, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .checkbox-item:hover {
+            background: #e9ecef;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #2d6591 0%, #68dcc7 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d6591;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #68dcc7;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 0;
+            }
+
+            .form-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><img src="https://d25t2285lxl5rf.cloudfront.net/images/shops/44092.png" alt="Yaffa Knafeh Logo"></div>
+            <h1>تقرير يومي – قسم الإنتاج</h1>
+            <p>مسؤول الإنتاج</p>
+        </div>
+
+        <form class="form-content" id="productionForm">
+
+            <div class="form-group">
+                <label for="date">تاريخ التقرير *</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reporterName">اسم المبلغ *</label>
+                <input type="text" id="reporterName" name="reporterName" required>
+            </div>
+
+            <div class="section-title">📦 استلام البضاعة</div>
+
+            <div class="form-group">
+                <label for="receivedGoods">هل وصلت بضاعة جديدة؟ *</label>
+                <select id="receivedGoods" name="receivedGoods" required onchange="toggleGoodsSection()">
+                    <option value="">اختر...</option>
+                    <option value="لا">لا</option>
+                    <option value="نعم">نعم</option>
+                </select>
+            </div>
+
+            <div class="section-title">🏭 الإنتاج اليومي</div>
+
+            <div class="form-group">
+                <label for="smallHarkavotNoCheese">التركيبات الصغيرة بدون جبنة</label>
+                <input type="number" id="smallHarkavotNoCheese" name="smallHarkavotNoCheese" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="smallHarkavotWithCheese">التركيبات الصغيرة مع جبنة</label>
+                <input type="number" id="smallHarkavotWithCheese" name="smallHarkavotWithCheese" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="largeHarkavotNoCheese">التركيبات الكبيرة بدون جبنة</label>
+                <input type="number" id="largeHarkavotNoCheese" name="largeHarkavotNoCheese" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="largeHarkavotWithCheese">التركيبات الكبيرة مع جبنة</label>
+                <input type="number" id="largeHarkavotWithCheese" name="largeHarkavotWithCheese" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="knafehSyrup">ماء سكر للكنافة</label>
+                <input type="number" id="knafehSyrup" name="knafehSyrup" min="0" step="0.1">
+            </div>
+
+            <div class="form-group">
+                <label for="pistachioFingersTray">صواني أصابع فستق</label>
+                <input type="number" id="pistachioFingersTray" name="pistachioFingersTray" min="0" step="1">
+            </div>
+
+            <div class="form-group">
+                <label for="cashewFingersTray">صواني أصابع كاشيو</label>
+                <input type="number" id="cashewFingersTray" name="cashewFingersTray" min="0" step="1">
+            </div>
+
+            <div class="form-group">
+                <label for="bilawraPistachioTray">صواني بلاورة فستق</label>
+                <input type="number" id="bilawraPistachioTray" name="bilawraPistachioTray" min="0" step="1">
+            </div>
+
+            <div class="form-group">
+                <label for="bilawraCashewTray">صواني بلاورة كاشيو</label>
+                <input type="number" id="bilawraCashewTray" name="bilawraCashewTray" min="0" step="1">
+            </div>
+
+            <div class="form-group">
+                <label for="bormaTray">صواني بورما</label>
+                <input type="number" id="bormaTray" name="bormaTray" min="0" step="1">
+            </div>
+
+            <div class="form-group">
+                <label for="groundPistachio">فستق مطحون (كغ)</label>
+                <input type="number" id="groundPistachio" name="groundPistachio" min="0" step="0.1">
+            </div>
+
+            <div class="section-title">⚠️ الأعطال والمعدات(תקלות במכשירים)</div>
+
+            <div class="form-group">
+                <label>هل كانت هناك أعطال؟ *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="malfunctionYes" name="malfunctions" value="نعم" onclick="toggleMalfunctionDetails()" required>
+                        <label for="malfunctionYes">نعم</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="malfunctionNo" name="malfunctions" value="لا" onclick="toggleMalfunctionDetails()" required>
+                        <label for="malfunctionNo">لا</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="malfunctionGroup" style="display:none;">
+                <label for="malfunctionDetails">تفاصيل الأعطال</label>
+                <textarea id="malfunctionDetails" name="malfunctionDetails"></textarea>
+            </div>
+
+        
+            <div class="section-title">👥 مشاكل العمال</div>
+
+            <div class="form-group">
+                <label>هل كانت هناك مشاكل مع العمال؟ *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="workerYes" name="workerIssue" value="نعم" onclick="toggleWorkerProblem()" required>
+                        <label for="workerYes">نعم</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="workerNo" name="workerIssue" value="لا" onclick="toggleWorkerProblem()" required>
+                        <label for="workerNo">لا</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="workerGroup" style="display:none;">
+                <label for="problameDetails">تفاصيل المشكلة</label>
+                <textarea id="problameDetails" name="problameDetails"></textarea>
+            </div>
+
+            <div class="section-title">💬 ملاحظات عامة</div>
+
+            <div class="form-group">
+                <label for="generalNotes">ملاحظات</label>
+                <textarea id="generalNotes" name="generalNotes"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">إرسال التقرير ✓</button>
+
+        </form>
+    </div>
+
+<script>
+document.getElementById('date').valueAsDate = new Date();
+
+
+function toggleMalfunctionDetails() {
+    const yes = document.getElementById('malfunctionYes').checked;
+    const box = document.getElementById('malfunctionGroup');
+    const textarea = document.getElementById('malfunctionDetails');
+    box.style.display = yes ? "block" : "none";
+    textarea.required = yes;
+    if (!yes) textarea.value = "";
+}
+
+function toggleWorkerProblem() {
+    const yes = document.getElementById('workerYes').checked;
+    const box = document.getElementById('workerGroup');
+    const textarea = document.getElementById('problameDetails');
+    box.style.display = yes ? "block" : "none";
+    textarea.required = yes;
+    if (!yes) textarea.value = "";
+}
+
+// SUBMIT
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw4K86qlBmZlal9_dnDHQa0jmLcMjOQJ2vU7MJ7ovBoNhzS2A0hIM4t48PRzBsgehMyDg/exec';
+
+document.getElementById('productionForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitBtn = this.querySelector('.submit-btn');
+    submitBtn.textContent = '⏳ שולח...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(this);
+    const data = { formType: 'production' };
+
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'hidden_iframe';
+    document.body.appendChild(iframe);
+
+    const hiddenForm = document.createElement('form');
+    hiddenForm.target = 'hidden_iframe';
+    hiddenForm.method = 'POST';
+    hiddenForm.action = SCRIPT_URL;
+
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'data';
+    input.value = JSON.stringify(data);
+    hiddenForm.appendChild(input);
+
+    document.body.appendChild(hiddenForm);
+    hiddenForm.submit();
+
+    setTimeout(() => {
+        alert('✅ הדיווח נשלח בהצלחה!');
+        this.reset();
+        document.getElementById('date').valueAsDate = new Date();
+        toggleMalfunctionDetails();
+        toggleWorkerProblem();
+        submitBtn.textContent = 'إرسال التقرير ✓';
+        submitBtn.disabled = false;
+    }, 1200);
+});
+</script>
+
+</body>
+</html>

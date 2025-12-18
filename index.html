@@ -1,354 +1,327 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>דיווח יומי - אחראית קונדיטוריה</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fc694b 0%, #ffc243 100%);
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #fc694b 0%, #ffc243 100%);
-            padding: 30px;
-            text-align: center;
-            color: white;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            padding: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .old-logo-placeholder {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .form-content {
-            padding: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            color: #fc694b;
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        input[type="date"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 15px;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: #ffc243;
-            box-shadow: 0 0 0 3px rgba(255, 194, 67, 0.1);
-        }
-
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .radio-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .radio-item input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #fc694b 0%, #ffc243 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(252, 105, 75, 0.3);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #fc694b;
-            margin: 30px 0 15px 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ffc243;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                border-radius: 0;
-            }
-            
-            .form-content {
-                padding: 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דיווח יומי - אחראית קונדיטוריה</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fc694b 0%, #ffc243 100%);
+  padding: 20px;
+  min-height: 100vh;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+.header {
+  background: linear-gradient(135deg, #fc694b 0%, #ffc243 100%);
+  padding: 30px;
+  text-align: center;
+  color: white;
+}
+.logo {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  padding: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+.logo img { width: 100%; height: 100%; object-fit: contain; }
+.header h1 { font-size: 28px; margin-bottom: 5px; }
+.header p { font-size: 16px; opacity: 0.9; }
+.form-content { padding: 30px; }
+.form-group { margin-bottom: 25px; }
+label { display: block; font-weight: 600; color: #fc694b; margin-bottom: 8px; font-size: 15px; }
+input[type="text"], input[type="number"], input[type="date"], textarea, select {
+  width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 15px; transition: all 0.3s; font-family: inherit;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none; border-color: #ffc243; box-shadow: 0 0 0 3px rgba(255, 194, 67, 0.1);
+}
+textarea { min-height: 100px; resize: vertical; }
+.radio-group { display: flex; gap: 15px; flex-wrap: wrap; }
+.radio-item { display: flex; align-items: center; gap: 8px; }
+.radio-item input[type="radio"], .product-checkbox { width: 18px; height: 18px; cursor: pointer; }
+.product-qty { width: 60px; padding: 5px; margin-left: 5px; }
+.submit-btn {
+  width: 100%; padding: 15px; background: linear-gradient(135deg, #fc694b 0%, #ffc243 100%);
+  color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: 600;
+  cursor: pointer; transition: all 0.3s; margin-top: 10px;
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(252, 105, 75, 0.3); }
+.submit-btn:active { transform: translateY(0); }
+.section-title { font-size: 18px; font-weight: 600; color: #fc694b; margin: 30px 0 15px 0; padding-bottom: 10px; border-bottom: 2px solid #ffc243; }
+@media (max-width: 600px) {
+  .container { border-radius: 0; }
+  .form-content { padding: 20px; }
+}
+.product-item { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.product-qty:disabled { background: #f0f0f0; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo"><img src="https://d25t2285lxl5rf.cloudfront.net/images/shops/44092.png" alt="Yaffa Knafeh Logo"></div>
-            <h1>דיווח יומי - קונדיטוריה</h1>
-            <p>אחראית קונדיטוריה</p>
-        </div>
+<div class="container">
+<div class="header">
+  <div class="logo"><img src="logo.jpg" alt="Yaffa Knafeh Logo"></div>
+  <h1>דיווח יומי - קונדיטוריה</h1>
+  <p>אחראית קונדיטוריה</p>
+</div>
 
-        <form class="form-content" id="pastryForm">
-            <!-- תאריך ושם -->
-            <div class="form-group">
-                <label for="date">תאריך הדיווח *</label>
-                <input type="date" id="date" name="date" required>
-            </div>
+<form class="form-content" id="pastryForm">
+  <div class="form-group">
+    <label for="date">תאריך הדיווח *</label>
+    <input type="date" id="date" name="date" required>
+  </div>
+  <div class="form-group">
+    <label for="reporterName">שם המדווחת *</label>
+    <input type="text" id="reporterName" name="reporterName" required placeholder="הזיני שם מלא">
+  </div>
 
-            <div class="form-group">
-                <label for="reporterName">שם המדווחת *</label>
-                <input type="text" id="reporterName" name="reporterName" required placeholder="הזיני שם מלא">
-            </div>
+  <div class="section-title">🍰 מתוקים שיוצרו היום</div>
+  <div class="form-group" id="productsContainer">
 
-            <!-- מתוקים שיוצרו -->
-            <div class="section-title">🍰 מתוקים שיוצרו היום</div>
-
-            <div class="form-group">
-                <label for="sweetsProduced">פרטי המתוקים שיוצרו *</label>
-                <textarea id="sweetsProduced" name="sweetsProduced" required placeholder="פרטי: סוג המתוק וכמות (למשל: עוגת גבינה - 3 יחידות, בראוניז - 20 יח', מאפינס - 24 יח')"></textarea>
-            </div>
-
-            <!-- הזמנות מיוחדות -->
-            <div class="section-title">🎂 הזמנות מיוחדות</div>
-
-            <div class="form-group">
-                <label>האם התקבלו הזמנות מיוחדות היום? *</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="ordersYes" name="specialOrders" value="כן" required>
-                        <label for="ordersYes">כן</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="ordersNo" name="specialOrders" value="לא" required>
-                        <label for="ordersNo">לא</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="orderDetails">פרטי ההזמנות המיוחדות</label>
-                <textarea id="orderDetails" name="orderDetails" placeholder="פרטי: סוג ההזמנה, תאריך לאיסוף, שם לקוח..."></textarea>
-            </div>
-
-            <!-- חומרי אפייה -->
-            <div class="section-title">📦 חומרי אפייה ומלאי</div>
-
-            <div class="form-group">
-                <label for="missingIngredients">חומרי אפייה שחסרים או נגמרו</label>
-                <textarea id="missingIngredients" name="missingIngredients" placeholder="פרטי: קמח, סוכר, ביצים, חמאה, שוקולד, וניל, אבקת אפייה וכו'"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="ingredientsOrdered">חומרים שהוזמנו היום</label>
-                <textarea id="ingredientsOrdered" name="ingredientsOrdered" placeholder="פרטי הזמנות..."></textarea>
-            </div>
-
-            <!-- תקלות -->
-            <div class="section-title">⚠️ תקלות וציוד</div>
-
-            <div class="form-group">
-                <label>האם היו תקלות בתנורים/ציוד אפייה? *</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="malfunctionYes" name="malfunctions" value="כן" required>
-                        <label for="malfunctionYes">כן</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="malfunctionNo" name="malfunctions" value="לא" required>
-                        <label for="malfunctionNo">לא</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="malfunctionDetails">פרטי התקלות</label>
-                <textarea id="malfunctionDetails" name="malfunctionDetails" placeholder="איזה ציוד, מה הבעיה, האם תוקן..."></textarea>
-            </div>
-
-            <!-- איכות -->
-            <div class="section-title">✨ איכות המוצרים</div>
-
-            <div class="form-group">
-                <label>האם היו בעיות באיכות המתוקים? *</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="qualityYes" name="qualityIssues" value="כן" required>
-                        <label for="qualityYes">כן</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="qualityNo" name="qualityIssues" value="לא" required>
-                        <label for="qualityNo">לא</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="qualityDetails">פרטי בעיות איכות</label>
-                <textarea id="qualityDetails" name="qualityDetails" placeholder="מה הבעיה, באיזה מוצר, האם נפסל..."></textarea>
-            </div>
-
-            <!-- נוכחות -->
-            <div class="section-title">👥 נוכחות צוות</div>
-
-            <div class="form-group">
-                <label for="staffPresent">מספר עובדות שהיו היום *</label>
-                <input type="number" id="staffPresent" name="staffPresent" min="0" required>
-            </div>
-
-            <div class="form-group">
-                <label>האם היו עובדות נעדרות? *</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="absentYes" name="absentees" value="כן" required>
-                        <label for="absentYes">כן</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="absentNo" name="absentees" value="לא" required>
-                        <label for="absentNo">לא</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="absentDetails">פרטי העדרויות</label>
-                <textarea id="absentDetails" name="absentDetails" placeholder="שמות, סיבה אם ידועה..."></textarea>
-            </div>
-
-            <!-- הערות -->
-            <div class="section-title">💬 הערות והמלצות</div>
-
-            <div class="form-group">
-                <label for="generalNotes">הערות כלליות</label>
-                <textarea id="generalNotes" name="generalNotes" placeholder="הערות, המלצות לשיפור, או כל מידע רלוונטי אחר..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">📤 שלחי דיווח</button>
-        </form>
+    <!-- Full product list -->
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="dubaiChocolateQty" id="dubaiChocolate">
+      <label for="dubaiChocolate">שוקולד דובאי</label>
+      כמות: <input type="number" min="0" class="product-qty" id="dubaiChocolateQty" disabled>
     </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="dubaiSmallQty" id="dubaiSmall">
+      <label for="dubaiSmall">עוגת דובאי קטן</label>
+      כמות: <input type="number" min="0" class="product-qty" id="dubaiSmallQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="dubaiLargeQty" id="dubaiLarge">
+      <label for="dubaiLarge">עוגת דובאי גדול</label>
+      כמות: <input type="number" min="0" class="product-qty" id="dubaiLargeQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="trlicePersonalQty" id="trlicePersonal">
+      <label for="trlicePersonal">טרליצה אישי</label>
+      כמות: <input type="number" min="0" class="product-qty" id="trlicePersonalQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="trlicePasQty" id="trlicePas">
+      <label for="trlicePas">טרליצה פס</label>
+      כמות: <input type="number" min="0" class="product-qty" id="trlicePasQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="trliceTrayQty" id="trliceTray">
+      <label for="trliceTray">טרליצה מגש</label>
+      כמות: <input type="number" min="0" class="product-qty" id="trliceTrayQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="malabiQty" id="malabi">
+      <label for="malabi">מלבי</label>
+      כמות: <input type="number" min="0" class="product-qty" id="malabiQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="veganMalabiQty" id="veganMalabi">
+      <label for="veganMalabi">מלבי טבעוני</label>
+      כמות: <input type="number" min="0" class="product-qty" id="veganMalabiQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="lilotBeirutQty" id="lilotBeirut">
+      <label for="lilotBeirut">לילות בירות</label>
+      כמות: <input type="number" min="0" class="product-qty" id="lilotBeirutQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="namuraQty" id="namura">
+      <label for="namura">נמורה</label>
+      כמות: <input type="number" min="0" class="product-qty" id="namuraQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="pistachioIceQty" id="pistachioIce">
+      <label for="pistachioIce">ארטיק פיסטוק</label>
+      כמות: <input type="number" min="0" class="product-qty" id="pistachioIceQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="dubaiIceQty" id="dubaiIce">
+      <label for="dubaiIce">ארטיק דובאי</label>
+      כמות: <input type="number" min="0" class="product-qty" id="dubaiIceQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="malabiIceQty" id="malabiIce">
+      <label for="malabiIce">ארטיק מלבי</label>
+      כמות: <input type="number" min="0" class="product-qty" id="malabiIceQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="cashewIceQty" id="cashewIce">
+      <label for="cashewIce">ארטיק קשיו</label>
+      כמות: <input type="number" min="0" class="product-qty" id="cashewIceQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="milkChocolateSyrupQty" id="milkChocolateSyrup">
+      <label for="milkChocolateSyrup">סירופ שוקולד חלב</label>
+      כמות: <input type="number" min="0" class="product-qty" id="milkChocolateSyrupQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="whiteChocolateSyrupQty" id="whiteChocolateSyrup">
+      <label for="whiteChocolateSyrup">סירופ שוקולד לבן</label>
+      כמות: <input type="number" min="0" class="product-qty" id="whiteChocolateSyrupQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="pistachioSyrupQty" id="pistachioSyrup">
+      <label for="pistachioSyrup">סירופ פיסטוק</label>
+      כמות: <input type="number" min="0" class="product-qty" id="pistachioSyrupQty" disabled>
+    </div>
+    <div class="product-item">
+      <input type="checkbox" class="product-checkbox" data-field="oumiQty" id="oumi">
+      <label for="oumi">אם עלי</label>
+      כמות: <input type="number" min="0" class="product-qty" id="oumiQty" disabled>
+    </div>
+  </div>
+
+  <!-- rest of the form remains the same -->
+  <div class="section-title">🎂 הזמנות מיוחדות</div>
+  <div class="form-group">
+    <label>האם התקבלו הזמנות מיוחדות היום? *</label>
+    <div class="radio-group">
+      <div class="radio-item">
+        <input type="radio" id="ordersYes" name="specialOrders" value="כן" required>
+        <label for="ordersYes">כן</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="ordersNo" name="specialOrders" value="לא" required>
+        <label for="ordersNo">לא</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="orderDetails">פרטי ההזמנות המיוחדות</label>
+    <textarea id="orderDetails" name="orderDetails" placeholder="פרטי: סוג ההזמנה, תאריך לאיסוף, שם לקוח..."></textarea>
+  </div>
+
+  <div class="section-title">📦 חומרי אפייה ומלאי</div>
+  <div class="form-group">
+    <label for="missingIngredients">חומרי אפייה שחסרים או נגמרו</label>
+    <textarea id="missingIngredients" name="missingIngredients" placeholder="פרטי: קמח, סוכר, ביצים, חמאה, שוקולד, וניל, אבקת אפייה וכו'"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="ingredientsOrdered">חומרים שהוזמנו היום</label>
+    <textarea id="ingredientsOrdered" name="ingredientsOrdered" placeholder="פרטי הזמנות..."></textarea>
+  </div>
+
+  <div class="section-title">⚠️ תקלות וציוד</div>
+  <div class="form-group">
+    <label>האם היו תקלות בתנורים/ציוד אפייה? *</label>
+    <div class="radio-group">
+      <div class="radio-item">
+        <input type="radio" id="malfunctionYes" name="malfunctions" value="כן" required>
+        <label for="malfunctionYes">כן</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="malfunctionNo" name="malfunctions" value="לא" required>
+        <label for="malfunctionNo">לא</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="malfunctionDetails">פרטי התקלות</label>
+    <textarea id="malfunctionDetails" name="malfunctionDetails" placeholder="איזה ציוד, מה הבעיה, האם תוקן..."></textarea>
+  </div>
+
+  <div class="section-title">✨ איכות המוצרים</div>
+  <div class="form-group">
+    <label>האם היו בעיות באיכות המתוקים? *</label>
+    <div class="radio-group">
+      <div class="radio-item">
+        <input type="radio" id="qualityYes" name="qualityIssues" value="כן" required>
+        <label for="qualityYes">כן</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="qualityNo" name="qualityIssues" value="לא" required>
+        <label for="qualityNo">לא</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="qualityDetails">פרטי בעיות איכות</label>
+    <textarea id="qualityDetails" name="qualityDetails" placeholder="מה הבעיה, באיזה מוצר, האם נפסל..."></textarea>
+  </div>
+
+  <div class="section-title">👥 נוכחות צוות</div>
+  <div class="form-group">
+    <label for="staffPresent">מספר עובדות שהיו היום *</label>
+    <input type="number" id="staffPresent" name="staffPresent" min="0" required>
+  </div>
+  <div class="form-group">
+    <label>האם היו עובדות נעדרות? *</label>
+    <div class="radio-group">
+      <div class="radio-item">
+        <input type="radio" id="absentYes" name="absentees" value="כן" required>
+        <label for="absentYes">כן</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="absentNo" name="absentees" value="לא" required>
+        <label for="absentNo">לא</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="absentDetails">פרטי העדרויות</label>
+    <textarea id="absentDetails" name="absentDetails" placeholder="שמות, סיבה אם ידועה..."></textarea>
+  </div>
+
+  <div class="section-title">💬 הערות והמלצות</div>
+  <div class="form-group">
+    <label for="generalNotes">הערות כלליות</label>
+    <textarea id="generalNotes" name="generalNotes" placeholder="הערות, המלצות לשיפור, או כל מידע רלוונטי אחר..."></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">📤 שלחי דיווח</button>
+</form>
+</div>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHl2jY0oJ1Dh9cET7PYZcSZ7CRH_fw8KvVZTIKfi4mkJEpYQ7VNnbQcqMzqWlISPMmSA/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkEiNsswZx6LhrPn7cNj3NMUD-n4MLqpCjn4Tdvewrcdh1QDTPXyr7tDli8MBFTmyl0A/exec';
 
-// קובע תאריך נוכחי
+// Set today's date
 document.getElementById('date').valueAsDate = new Date();
 
-// טיפול בשליחת הטופס
+// Enable/disable quantity inputs when checkbox is toggled
+document.querySelectorAll('.product-checkbox').forEach(cb => {
+    const qtyInput = document.getElementById(cb.dataset.field);
+    cb.addEventListener('change', () => {
+        qtyInput.disabled = !cb.checked;
+        if(!cb.checked) qtyInput.value = '';
+    });
+});
+
 document.getElementById('pastryForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
     const submitBtn = this.querySelector('.submit-btn');
     submitBtn.textContent = '⏳ שולח...';
     submitBtn.disabled = true;
 
-    const formData = new FormData(this);
-    const data = { formType: 'pastry' }; // 👈 חשוב מאוד — זה קובע לגיליון "קונדיטוריה"
+    const data = { formType: 'pastry' };
 
-    formData.forEach((value, key) => {
-        if (data[key]) {
-            if (!Array.isArray(data[key])) data[key] = [data[key]];
-            data[key].push(value);
-        } else {
+    // Collect each sweet individually
+    document.querySelectorAll('#productsContainer .product-item').forEach(p => {
+        const checkbox = p.querySelector('input[type="checkbox"]');
+        const qtyInput = p.querySelector('input[type="number"]');
+        const fieldName = qtyInput.id; // send each quantity individually
+        data[fieldName] = checkbox.checked ? (qtyInput.value || 0) : 0;
+    });
+
+    // Collect rest of the form data
+    new FormData(this).forEach((value, key) => {
+        if (!key.endsWith('Qty') && key !== 'product-checkbox') {
             data[key] = value;
         }
     });
 
-    // שליחה ל-App Script
+    // Send data via hidden form to Google Apps Script
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
     iframe.name = 'hidden_iframe';
@@ -372,6 +345,14 @@ document.getElementById('pastryForm').addEventListener('submit', function(e) {
         alert('✅ הדיווח נשלח בהצלחה!\n\nהנתונים נשמרו בגיליון "קונדיטוריה" ב-Google Sheets.');
         this.reset();
         document.getElementById('date').valueAsDate = new Date();
+        // reset quantities and checkboxes
+        document.querySelectorAll('#productsContainer .product-item').forEach(p => {
+            const checkbox = p.querySelector('input[type="checkbox"]');
+            const qtyInput = p.querySelector('input[type="number"]');
+            checkbox.checked = false;
+            qtyInput.value = '';
+            qtyInput.disabled = true;
+        });
         submitBtn.textContent = '📤 שלחי דיווח';
         submitBtn.disabled = false;
         document.body.removeChild(hiddenForm);
